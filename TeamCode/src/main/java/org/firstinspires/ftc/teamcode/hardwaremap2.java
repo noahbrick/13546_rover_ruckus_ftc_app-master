@@ -14,12 +14,15 @@ public class hardwaremap2 {
     public DcMotor leftoniwheel = null;
     public DcMotor rightwheel = null;
     public DcMotor leftwheel = null;
-    public DcMotor ballarm = null;
-    public Servo ballholder = null;
+    public DcMotor ballpulley = null;
+    public DcMotor   spinner = null;
 
-    public final static double negativeone = 0;
-    public final static double center = 0.5;
-    public final static double one = 1;
+
+    public Servo flipper = null ;
+
+
+
+
 
     HardwareMap hwMap2 = null;
 
@@ -35,9 +38,9 @@ public class hardwaremap2 {
 
         lifter = hwMap2.get(DcMotor.class, "lifter");
 
-        ballarm = hwMap2.get(DcMotor.class, "ball arm");
-        ballholder = hwMap2.get(Servo.class, "servoball");
+        ballpulley = hwMap2.get(DcMotor.class, "ballpulley");
 
+        spinner = hwMap2.get(DcMotor.class, "spinner");
 
 
 

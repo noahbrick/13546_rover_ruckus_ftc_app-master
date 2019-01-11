@@ -21,28 +21,27 @@ public class drivetrank2 extends LinearOpMode{
         double liftmotor;
         double left;
         double right;
-        double ballservo;
-        double ballarm;
-        double divide;
+        double flipperservo;
+        double ballpulleymotor;
+        double spinnermotor;
+        double _spinnermotor;
 
         robot.init(hardwareMap);
 
         waitForStart();
         while (opModeIsActive()) {
 
-            ballarm = -gamepad2.left_stick_y;
-            divide = 1;
-            //down
-            if (ballarm > 0) {
-                divide = 3;
-            }
-            //up
+            _spinnermotor = -gamepad2.left_trigger;
+            robot.lifter.setPower(_spinnermotor);
 
-            else if (ballarm < 0) {
-                divide = 3;
-            }
+             spinnermotor = gamepad2.right_trigger;
+            robot.lifter.setPower(spinnermotor);
 
-            robot.ballarm.setPower(ballarm / divide);
+
+
+
+            ballpulleymotor = -gamepad2.left_stick_y;
+            robot.lifter.setPower(ballpulleymotor);
 
 
             liftmotor = -gamepad2.right_stick_y;
@@ -106,18 +105,7 @@ public class drivetrank2 extends LinearOpMode{
             }
 
 
-            if (gamepad2.dpad_down)
-            {
-                robot.ballholder.setPosition(robot.center);
-            }
-            else if (gamepad2.dpad_left)
-            {
-                robot.ballholder.setPosition(robot.negativeone);
-            }
-            else if  (gamepad2.dpad_right)
-            {
-                robot.ballholder.setPosition(robot.one);
-            }
+
             }
         }
 

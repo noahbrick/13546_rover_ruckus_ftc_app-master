@@ -45,7 +45,7 @@ public class auto2 extends LinearOpMode {
 
     public void runOpMode() {
 
-        //initVuforia();
+        initVuforia();
 
 
         if (ClassFactory.getInstance().
@@ -53,7 +53,7 @@ public class auto2 extends LinearOpMode {
                 canCreateTFObjectDetector())
 
         {
-            //initTfod();
+            initTfod();
         } else
 
         {
@@ -72,6 +72,8 @@ public class auto2 extends LinearOpMode {
 
 
         robot.init(hardwareMap);
+
+
         telemetry.addData("Status", "Resetting Encoders");
         telemetry.update();
 
@@ -99,7 +101,7 @@ public class auto2 extends LinearOpMode {
         waitForStart();
 
 
-        //int liftertarget;
+        int liftertarget;
 
 
         if (opModeIsActive()) {
@@ -206,9 +208,16 @@ public class auto2 extends LinearOpMode {
                                 for (Recognition recognition : updatedRecognitions) {
                                     if (recognition.getLabel().equals(LABEL_GOLD_MINERAL)) {
                                         goldMineralX = (int) recognition.getLeft();
-                                    } else if (silverMineral1X == -1) {
+                                    }
+
+
+
+                                    else if (silverMineral1X == -1) {
                                         silverMineral1X = (int) recognition.getLeft();
-                                    } else {
+                                    }
+
+
+                                    else {
                                         silverMineral2X = (int) recognition.getLeft();
                                     }
                                 }
@@ -240,8 +249,55 @@ public class auto2 extends LinearOpMode {
 
                                     } else if (goldMineralX > silverMineral1X && goldMineralX > silverMineral2X) {
                                         telemetry.addData("Gold Mineral Position", "Right");
-                                    } else {
+
+                                        robot.leftoniwheel.setTargetPosition(500);
+                                        robot.leftwheel.setTargetPosition(-500);
+                                        robot.rightwheel.setTargetPosition(-500);
+                                        robot.rightoniwheel.setTargetPosition(500);
+
+                                        robot.leftwheel.setPower(1);
+                                        robot.rightwheel.setPower(1);
+                                        robot.leftoniwheel.setPower(1);
+                                        robot.rightoniwheel.setPower(1);
+                                        sleep(1000);
+
+                                        robot.leftoniwheel.setTargetPosition(-1000);
+                                        robot.leftwheel.setTargetPosition(1000);
+                                        robot.rightwheel.setTargetPosition(1000);
+                                        robot.rightoniwheel.setTargetPosition(-1000);
+
+                                        robot.leftwheel.setPower(1);
+                                        robot.rightwheel.setPower(1);
+                                        robot.leftoniwheel.setPower(1);
+                                        robot.rightoniwheel.setPower(1);
+
+
+
+
+                                    }
+
+
+
+
+
+
+                                    else {
                                         telemetry.addData("Gold Mineral Position", "Center");
+
+
+                                        robot.leftoniwheel.setTargetPosition(-1000);
+                                        robot.leftwheel.setTargetPosition(1000);
+                                        robot.rightwheel.setTargetPosition(1000);
+                                        robot.rightoniwheel.setTargetPosition(-1000);
+
+                                        robot.leftwheel.setPower(1);
+                                        robot.rightwheel.setPower(1);
+                                        robot.leftoniwheel.setPower(1);
+                                        robot.rightoniwheel.setPower(1);
+
+
+
+
                                     }
                                 }
                             }
@@ -278,7 +334,7 @@ public class auto2 extends LinearOpMode {
         }
 
 
-        // private void initVuforia () {
+        private void initVuforia () {
 
         // Configure Vuforia by creating a Parameter object, and passing it to the Vuforia engine.
 
