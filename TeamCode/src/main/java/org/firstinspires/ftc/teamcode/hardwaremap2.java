@@ -15,10 +15,11 @@ public class hardwaremap2 {
     public DcMotor rightwheel = null;
     public DcMotor leftwheel = null;
     public DcMotor ballpulley = null;
-    public DcMotor   spinner = null;
+    public DcMotor   ballfliper = null;
 
 
-    public Servo flipper = null ;
+    public Servo liftflipper = null ;
+    public Servo spinner = null ;
 
 
 
@@ -40,13 +41,18 @@ public class hardwaremap2 {
 
         ballpulley = hwMap2.get(DcMotor.class, "ballpulley");
 
-        spinner = hwMap2.get(DcMotor.class, "spinner");
+        ballfliper = hwMap2.get(DcMotor.class, "ballfliper");
+
+
+        spinner = hwMap2.get(Servo.class, "spinner");
+
+        liftflipper = hwMap2.get(Servo.class, "lifterflipper");
 
 
 
 
 
-                }
+    }
 
     }
 
